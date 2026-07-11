@@ -474,6 +474,96 @@ export const ANIMACOES: Record<string, AnimDef> = {
     ],
     dur: [1300, 1300],
   },
+
+  // Afundo reverso: passo para TRÁS e desce; o joelho de trás quase toca o chão.
+  'reverse-lunge': {
+    frames: [
+      p({}),
+      p({
+        hipY: 146, torso: 8,
+        rThigh: -48, rShin: -74, lThigh: 22, lShin: -8,
+        lUpper: 18, lFore: 18, rUpper: -18, rFore: -18,
+      }),
+      p({
+        hipY: 146, torso: 8,
+        rThigh: -48, rShin: -74, lThigh: 22, lShin: -8,
+        lUpper: 18, lFore: 18, rUpper: -18, rFore: -18,
+      }),
+      p({}),
+    ],
+    dur: [550, 350, 550, 350],
+  },
+
+  // Chute frontal: chuta uma perna à frente e desce, alternando (cardio de pernas).
+  'front-kick': {
+    frames: [
+      p({ lThigh: 78, lShin: 8, lUpper: -18, lFore: -18, rUpper: 26, rFore: 26, hipY: 118 }),
+      p({}),
+      p({ rThigh: 78, rShin: 8, rUpper: -18, rFore: -18, lUpper: 26, lFore: 26, hipY: 118 }),
+      p({}),
+    ],
+    dur: [300, 260, 300, 260],
+  },
+
+  // Pulo agachado: agacha e explode para cima com os braços, cai de novo no agachamento.
+  'squat-jump': {
+    frames: [
+      p({
+        hipX: 92, hipY: 146, torso: 26,
+        lThigh: 66, lShin: -12, rThigh: 62, rShin: -14,
+        lUpper: 70, lFore: 70, rUpper: 66, rFore: 66,
+      }),
+      p({
+        hipY: 108, torso: 4,
+        lUpper: 150, lFore: 150, rUpper: -150, rFore: -150,
+        lThigh: 4, lShin: 4, rThigh: -4, rShin: -4,
+      }),
+      p({
+        hipX: 92, hipY: 146, torso: 26,
+        lThigh: 66, lShin: -12, rThigh: 62, rShin: -14,
+        lUpper: 70, lFore: 70, rUpper: 66, rFore: 66,
+      }),
+    ],
+    dur: [500, 260, 260],
+  },
+
+  // Elevação frontal: os dois braços sobem à frente até a altura dos ombros.
+  'front-raise': {
+    frames: [
+      p({ lUpper: 8, lFore: 8, rUpper: -8, rFore: -8 }),
+      p({ lUpper: 88, lFore: 88, rUpper: 88, rFore: 88 }),
+    ],
+    dur: [600, 600],
+  },
+
+  // Tríceps aéreo: um braço sobe, dobra o cotovelo (mão à nuca) e estende p/ cima; alterna.
+  'overhead-triceps': {
+    frames: [
+      p({ lUpper: 170, lFore: 250, rUpper: -8, rFore: -8 }), // esq. flexionado atrás
+      p({ lUpper: 172, lFore: 176, rUpper: -8, rFore: -8 }), // esq. estende p/ cima
+      p({ rUpper: 170, rFore: 250, lUpper: 8, lFore: 8 }), //   troca de lado
+      p({ rUpper: 172, rFore: 176, lUpper: 8, lFore: 8 }),
+    ],
+    dur: [500, 500, 500, 500],
+  },
+
+  // Flexão de braço: corpo reto (prancha), dobra e estende os cotovelos.
+  'pushup': {
+    frames: [
+      p({
+        hipY: 168, torso: 78,
+        lUpper: 80, lFore: 80, rUpper: 76, rFore: 76,
+        lThigh: -76, lShin: -76, rThigh: -80, rShin: -80,
+      }),
+      p({
+        hipY: 172, torso: 80,
+        lUpper: 40, lFore: 104, rUpper: 36, rFore: 100,
+        lThigh: -77, lShin: -77, rThigh: -81, rShin: -81,
+      }),
+    ],
+    dur: [600, 600],
+    prop: 'chao',
+  },
 }
 
 export const animOuPadrao = (chave: string): AnimDef => ANIMACOES[chave] ?? ANIMACOES['march']
