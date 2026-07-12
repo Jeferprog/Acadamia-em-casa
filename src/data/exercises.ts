@@ -269,6 +269,36 @@ export const EXERCICIOS: Exercicio[] = [
     },
   },
 
+  {
+    id: 'chute-frontal',
+    nome: 'Chute frontal',
+    dica: 'Chute uma perna à frente e desça; alterne as pernas em ritmo, mantendo o tronco firme.',
+    musculos: 'Pernas, quadril, cardio',
+    categoria: 'cardio',
+    equipamento: 'nenhum',
+    impacto: 'medio',
+    anim: 'front-kick',
+    variacoes: {
+      facil: 'Chutes baixos e lentos',
+      medio: 'Chute na altura do quadril',
+      dificil: 'Chutes mais altos e rápidos, sem perder o equilíbrio',
+    },
+  },
+  {
+    id: 'pulo-agachado',
+    nome: 'Pulo agachado',
+    dica: 'Agache e exploda para cima num pulo, subindo os braços. Caia de novo no agachamento, macio.',
+    musculos: 'Pernas, glúteos, cardio',
+    categoria: 'cardio',
+    equipamento: 'nenhum',
+    impacto: 'alto',
+    anim: 'squat-jump',
+    variacoes: {
+      facil: 'Sem pulo: só suba na ponta dos pés',
+      medio: 'Pulinho leve saindo do agachamento',
+      dificil: 'Pulo explosivo e queda controlada',
+    },
+  },
   // ─── PERNAS E GLÚTEOS ──────────────────────────────────────────
   {
     id: 'agachamento',
@@ -329,6 +359,21 @@ export const EXERCICIOS: Exercicio[] = [
       facil: 'Desça pouco, apoie a mão na parede',
       medio: 'Desça até o joelho quase tocar o chão',
       dificil: 'Desça mais fundo, subida controlada',
+    },
+  },
+  {
+    id: 'afundo-reverso',
+    nome: 'Afundo reverso',
+    dica: 'Dê um passo para TRÁS e dobre os joelhos até o de trás quase tocar o chão. Volte e troque.',
+    musculos: 'Coxa, glúteos, equilíbrio',
+    categoria: 'pernas',
+    equipamento: 'nenhum',
+    impacto: 'medio',
+    anim: 'reverse-lunge',
+    variacoes: {
+      facil: 'Passo curto para trás, desça pouco',
+      medio: 'Desça até o joelho de trás quase tocar o chão',
+      dificil: 'Desça controlado e suba devagar, sem apoiar o joelho',
     },
   },
   {
@@ -469,6 +514,51 @@ export const EXERCICIOS: Exercicio[] = [
     },
   },
 
+  {
+    id: 'flexao-de-braco',
+    nome: 'Flexão de braço',
+    dica: 'Corpo reto como uma tábua, mãos na linha do peito. Desça dobrando os cotovelos e empurre.',
+    musculos: 'Peito, ombros, tríceps',
+    categoria: 'superiores',
+    equipamento: 'nenhum',
+    impacto: 'medio',
+    anim: 'pushup',
+    variacoes: {
+      facil: 'Faça com os joelhos apoiados no chão',
+      medio: 'Corpo reto, desça até onde conseguir',
+      dificil: 'Desça até o peito quase tocar o chão, controlado',
+    },
+  },
+  {
+    id: 'elevacao-frontal',
+    nome: 'Elevação frontal dos braços',
+    dica: 'Braços estendidos, levante-os à frente até a altura dos ombros e desça devagar.',
+    musculos: 'Ombro (frente)',
+    categoria: 'superiores',
+    equipamento: 'nenhum',
+    impacto: 'baixo',
+    anim: 'front-raise',
+    variacoes: {
+      facil: 'Sem peso, movimento lento',
+      medio: 'Segure 1s no alto',
+      dificil: 'Com garrafas de água nas mãos',
+    },
+  },
+  {
+    id: 'triceps-aereo',
+    nome: 'Tríceps aéreo',
+    dica: 'Um braço para cima, dobre o cotovelo levando a mão à nuca e estenda para o alto. Troque.',
+    musculos: 'Tríceps',
+    categoria: 'superiores',
+    equipamento: 'nenhum',
+    impacto: 'baixo',
+    anim: 'overhead-triceps',
+    variacoes: {
+      facil: 'Movimento curto e lento',
+      medio: 'Estenda bem o braço para cima',
+      dificil: 'Com garrafa de água na mão',
+    },
+  },
   // ─── CORE (ABDÔMEN) ────────────────────────────────────────────
   {
     id: 'prancha',
