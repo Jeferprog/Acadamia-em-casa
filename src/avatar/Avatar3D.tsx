@@ -67,7 +67,12 @@ export default function Avatar3D({ anim, rodando = true, className }: Props) {
     // boneco (o manequim olha para +Z). A troca é suave (lerp no loop).
     const CAM_LADO = new THREE.Vector3(4.4, 1.3, 0.6)
     const CAM_FRENTE = new THREE.Vector3(0.5, 1.35, 4.7)
-    const ANIMS_DE_FRENTE = new Set(['jumping-jack', 'side-step'])
+    // Câmera de FRENTE nos movimentos do plano frontal (abrem para os lados).
+    const ANIMS_DE_FRENTE = new Set(['jumping-jack', 'side-step', 'sumo-squat', 'side-kick'])
+    // Braços que ABREM para os lados (plano frontal) em vez de frente/trás.
+    const BRACOS_FRONTAIS = new Set([
+      'jumping-jack', 'side-step', 'lateral-raise', 'lateral-raise-bw', 'side-kick',
+    ])
     const ALVO_CAM = new THREE.Vector3(0, 1.05, 0)
     camera.position.copy(CAM_LADO)
     camera.lookAt(ALVO_CAM)
@@ -382,9 +387,9 @@ export default function Avatar3D({ anim, rodando = true, className }: Props) {
       girar(b('Head'), dXYZ(neckX * 0.7, 0, neckZ * 0.7))
 
       // Braços no plano FRONTAL (abrem para os lados, em vez de frente/trás):
-      // elevação lateral, polichinelo e passo lateral — esses são vistos de frente.
-      // Giro de tronco: braços acompanham a rotação do corpo (extraY).
-      const frontal = ANIMS_DE_FRENTE.has(nomeRef.current) || nomeRef.current === 'lateral-raise'
+      // elevação lateral, polichinelo e passo lateral. Giro de tronco: braços
+      // acompanham a rotação do corpo (extraY).
+      const frontal = BRACOS_FRONTAIS.has(nomeRef.current)
       const extraY = nomeRef.current === 'torso-twist' ? (p.hipX - 100) * TWIST_TRONCO_GRAUS : 0
       aplicarBraco('Left', p.lUpper, p.lFore, frontal, extraY)
       aplicarBraco('Right', p.rUpper, p.rFore, frontal, extraY)
@@ -399,11 +404,21 @@ export default function Avatar3D({ anim, rodando = true, className }: Props) {
       // Polichinelo (visto de frente): as pernas ABREM para os lados (abdução no
       // eixo Z) em vez de balançar frente/trás. lThigh>0 abre p/ a esquerda (+X)
       // e rThigh<0 abre p/ a direita (-X); joelhos esticados.
-      if (nomeRef.current === 'jumping-jack') {
+      if (nomeRef.current === 'jumping-jack' || nomeRef.current === 'side-kick') {
+        // Pernas ABREM para os lados (abdução no eixo Z), joelhos retos. No chute
+        // lateral só uma perna abre por vez (a outra fica ~parada, apoio).
         girar(b('LeftUpLeg'), dXYZ(0, 0, p.lThigh * DEG))
         girar(b('RightUpLeg'), dXYZ(0, 0, p.rThigh * DEG))
         girar(b('LeftLeg'), dXYZ(0, 0, 0))
         girar(b('RightLeg'), dXYZ(0, 0, 0))
+      } else if (nomeRef.current === 'sumo-squat') {
+        // Agachamento sumo (de frente): pernas bem abertas (abdução fixa) e joelhos
+        // dobram conforme desce. A profundidade vem do hipY (acima).
+        const ab = 32 * DEG
+        girar(b('LeftUpLeg'), dXYZ(0, 0, ab))
+        girar(b('RightUpLeg'), dXYZ(0, 0, -ab))
+        girar(b('LeftLeg'), dXYZ(SINAL_JOELHO * p.lShin * DEG, 0, 0))
+        girar(b('RightLeg'), dXYZ(SINAL_JOELHO * p.rShin * DEG, 0, 0))
       } else if (nomeRef.current === 'side-step') {
         // Passo lateral: a base ABRE e FECHA conforme o corpo desliza
         // (|hipX-100|). Junto com o deslocamento do quadril, lê como passos para

@@ -564,6 +564,166 @@ export const ANIMACOES: Record<string, AnimDef> = {
     dur: [600, 600],
     prop: 'chao',
   },
+
+  // ── ONDA 2 (em pé, plano frontal — vistos de frente no 3D) ──────────
+  // Agachamento sumo: pernas bem abertas (abdução fixa no 3D) e desce dobrando
+  // os joelhos (shin) com o quadril baixando (hipY). Braços à frente p/ equilíbrio.
+  'sumo-squat': {
+    frames: [
+      p({ hipY: 122, lShin: -4, rShin: -4, lUpper: 14, lFore: 14, rUpper: -14, rFore: -14 }),
+      p({ hipY: 150, torso: 6, lShin: -70, rShin: -66, lUpper: 78, lFore: 78, rUpper: 74, rFore: 74 }),
+    ],
+    dur: [650, 650],
+  },
+
+  // Chute lateral: uma perna abre para o lado por vez (abdução no 3D), alternando.
+  // Braços abertos para os lados (equilíbrio).
+  'side-kick': {
+    frames: [
+      p({ lThigh: 52, lShin: 52, rThigh: -6, rShin: -6, lUpper: 35, lFore: 35, rUpper: -35, rFore: -35 }),
+      p({ lThigh: 6, lShin: 6, rThigh: -6, rShin: -6, lUpper: 30, lFore: 30, rUpper: -30, rFore: -30 }),
+      p({ rThigh: -52, rShin: -52, lThigh: 6, lShin: 6, lUpper: 35, lFore: 35, rUpper: -35, rFore: -35 }),
+      p({ lThigh: 6, lShin: 6, rThigh: -6, rShin: -6, lUpper: 30, lFore: 30, rUpper: -30, rFore: -30 }),
+    ],
+    dur: [360, 300, 360, 300],
+  },
+
+  // Elevação lateral sem peso: como a com garrafas, mas sem o prop (sem garrafas).
+  'lateral-raise-bw': {
+    frames: [
+      p({ lUpper: 8, lFore: 8, rUpper: -8, rFore: -8 }),
+      p({ lUpper: 85, lFore: 85, rUpper: -85, rFore: -85 }),
+    ],
+    dur: [550, 550],
+  },
+
+  // Pulo de corda (sem corda): pulinhos no lugar, antebraços à frente girando.
+  'jump-rope': {
+    frames: [
+      p({ hipY: 115, lThigh: 8, lShin: 22, rThigh: -8, rShin: -22, lUpper: 28, lFore: 68, rUpper: -28, rFore: -68 }),
+      p({ hipY: 122, lThigh: 5, lShin: 12, rThigh: -5, rShin: -12, lUpper: 26, lFore: 66, rUpper: -26, rFore: -66 }),
+    ],
+    dur: [230, 230],
+  },
+
+  // ── ONDA 3 (deitado / prancha — abdômen e core) ─────────────────────
+  // Ponte com uma perna: como a ponte, mas uma perna fica estendida no ar.
+  'single-leg-bridge': {
+    frames: [
+      p({
+        hipY: 182, torso: -78,
+        lUpper: 295, lFore: 295, rUpper: 290, rFore: 290,
+        lThigh: 112, lShin: 24, rThigh: 150, rShin: 150,
+      }),
+      p({
+        hipY: 170, torso: -70,
+        lUpper: 298, lFore: 298, rUpper: 293, rFore: 293,
+        lThigh: 100, lShin: 18, rThigh: 140, rShin: 140,
+      }),
+    ],
+    dur: [700, 700],
+    prop: 'chao',
+  },
+
+  // Escalador (mountain climber): em prancha, os joelhos vêm ao peito alternando.
+  'mountain-climber': {
+    frames: [
+      p({
+        hipY: 166, torso: 78,
+        lUpper: 80, lFore: 80, rUpper: 76, rFore: 76,
+        lThigh: -28, lShin: -120, rThigh: -80, rShin: -80,
+      }),
+      p({
+        hipY: 166, torso: 78,
+        lUpper: 80, lFore: 80, rUpper: 76, rFore: 76,
+        lThigh: -80, lShin: -80, rThigh: -28, rShin: -120,
+      }),
+    ],
+    dur: [280, 280],
+    prop: 'chao',
+  },
+
+  // Prancha com toque no ombro: em prancha, uma mão toca o ombro oposto alternando.
+  'plank-shoulder-tap': {
+    frames: [
+      p({
+        hipY: 168, torso: 78,
+        lUpper: 80, lFore: 80, rUpper: -46, rFore: -140,
+        lThigh: -76, lShin: -76, rThigh: -80, rShin: -80,
+      }),
+      p({
+        hipY: 168, torso: 78,
+        lUpper: 80, lFore: 80, rUpper: 76, rFore: 76,
+        lThigh: -76, lShin: -76, rThigh: -80, rShin: -80,
+      }),
+      p({
+        hipY: 168, torso: 78,
+        lUpper: -46, lFore: -140, rUpper: 76, rFore: 76,
+        lThigh: -76, lShin: -76, rThigh: -80, rShin: -80,
+      }),
+      p({
+        hipY: 168, torso: 78,
+        lUpper: 80, lFore: 80, rUpper: 76, rFore: 76,
+        lThigh: -76, lShin: -76, rThigh: -80, rShin: -80,
+      }),
+    ],
+    dur: [420, 300, 420, 300],
+    prop: 'chao',
+  },
+
+  // Elevação de pernas: deitado, as pernas sobem juntas e descem sem tocar o chão.
+  'leg-raise': {
+    frames: [
+      p({
+        hipY: 186, torso: -88,
+        lUpper: 300, lFore: 300, rUpper: 300, rFore: 300,
+        lThigh: 150, lShin: 150, rThigh: 148, rShin: 148,
+      }),
+      p({
+        hipY: 186, torso: -88,
+        lUpper: 300, lFore: 300, rUpper: 300, rFore: 300,
+        lThigh: 100, lShin: 100, rThigh: 98, rShin: 98,
+      }),
+    ],
+    dur: [700, 700],
+    prop: 'chao',
+  },
+
+  // Tesoura (scissor kicks): deitado, pernas sobem levemente e alternam.
+  'flutter-kick': {
+    frames: [
+      p({
+        hipY: 186, torso: -88,
+        lUpper: 300, lFore: 300, rUpper: 300, rFore: 300,
+        lThigh: 128, lShin: 128, rThigh: 140, rShin: 140,
+      }),
+      p({
+        hipY: 186, torso: -88,
+        lUpper: 300, lFore: 300, rUpper: 300, rFore: 300,
+        lThigh: 140, lShin: 140, rThigh: 128, rShin: 128,
+      }),
+    ],
+    dur: [300, 300],
+    prop: 'chao',
+  },
+
+  // Crunch reverso: deitado, leva os joelhos em direção ao peito (quadril curva).
+  'reverse-crunch': {
+    frames: [
+      p({
+        hipY: 186, torso: -86,
+        lUpper: 300, lFore: 300, rUpper: 300, rFore: 300,
+        lThigh: 120, lShin: 60, rThigh: 116, rShin: 56,
+      }),
+      p({
+        hipY: 180, torso: -80,
+        lUpper: 300, lFore: 300, rUpper: 300, rFore: 300,
+        lThigh: 95, lShin: 30, rThigh: 92, rShin: 26,
+      }),
+    ],
+    dur: [600, 600],
+    prop: 'chao',
+  },
 }
 
 export const animOuPadrao = (chave: string): AnimDef => ANIMACOES[chave] ?? ANIMACOES['march']
